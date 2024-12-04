@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+
+.header {
+    max-height: 200px;
+    text-align: center;
+    grid-row: 1;
+}
+
+.library {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.library>* {
+    max-width: 80%;
+}
+
+.innerContainer {
+    border: 1px solid black;
+    border-radius: 1.5em;
+    padding: 1.5em;
+    margin: 1.5rem;
+    line-height: 2.5em;
+}
+
+#new-book {
+    background-color: #46c210;
+    color: black;
+    padding: 0.7rem;
+    border-radius: 1.5rem;
+    max-width: 7em;
+    margin: auto;
+}
+
+/* Modal */
+::backdrop {
+    opacity: 0.75;
+}
+
+dialog {
+    width: 100%;
+    height: 100%;
+}
+
+dialog > form {
+    display: flex;
+    max-width: 20%;
+}
