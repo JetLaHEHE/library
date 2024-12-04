@@ -1,10 +1,12 @@
 const myLibrary = [];
 let bookCount = 0;
 
-function Book(name, year, author) {
+function Book(name, year, author, isRead) {
   this.name = name;
   this.year = year;
   this.author = author;
+  this.isRead = isRead;
+
 }
 
 function addBookToLibrary(book) {
@@ -26,14 +28,33 @@ function displayBook() {
     const name = document.createElement("h1");
     const year = document.createElement("h2");
     const author = document.createElement("h2");
+    const isRead = document.createElement("h3");
+    const btnRead = document.createElement("button");
 
-    name.innerHTML = myLibrary[x].name;
-    year.innerHTML = myLibrary[x].year;
-    author.innerHTML = myLibrary[x].author;
+    btnRead.className = "btnRead";
+
+    btnRead.innerText = 'Toggle read';
+    isRead.innerText = "Have not read";
+    name.innerText = myLibrary[x].name;
+    year.innerText = myLibrary[x].year;
+    author.innerText = myLibrary[x].author;
 
     innerContainer.appendChild(name);
     innerContainer.appendChild(year);
     innerContainer.appendChild(author);
+    innerContainer.appendChild(isRead);
+    innerContainer.appendChild(btnRead);
+
+    btnRead?.addEventListener("click", (event) => {
+      if(isRead.innerText == "Have not read"){
+        isRead.innerText = 'Have read';
+      }
+      else {
+        isRead.innerText = 'Have not read';
+      }
+      
+    });
+
   }
 
 }
@@ -56,7 +77,7 @@ btnSubmit.addEventListener("click", (event) => {
   else {
     bookCount++;
 
-    const book = new Book(bookTitle.value, bookYear.value, bookAuthor.value);
+    const book = new Book(bookTitle.value, bookYear.value, bookAuthor.value, false);
 
     addBookToLibrary(book);
 

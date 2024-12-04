@@ -24,6 +24,11 @@
     max-width: 80%;
 }
 
+.btnRead {
+    border-radius: 0.7rem;
+    padding: 0.7rem;
+}
+
 .innerContainer {
     border: 1px solid black;
     border-radius: 1.5em;
