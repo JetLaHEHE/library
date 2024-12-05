@@ -61,3 +61,11 @@ dialog > form {
     display: flex;
     max-width: 20%;
 }
+
+dialog ~ button {
+    border-radius: 1.5rem;
+    max-width: 200px;
+    place-self: center;
+    padding: 0.6rem;
+    margin-bottom: 0.5rem;
+}
