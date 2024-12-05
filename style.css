@@ -20,16 +20,17 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.library>* {
+/* .library>* {
     max-width: 80%;
-}
+} */
 
-.btnRead {
+.btnRead, .btnDel {
+    margin-left: 1.5rem;
     border-radius: 0.7rem;
     padding: 0.7rem;
 }
 
-.innerContainer {
+.library > div {
     border: 1px solid black;
     border-radius: 1.5em;
     padding: 1.5em;

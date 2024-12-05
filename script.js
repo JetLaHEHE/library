@@ -6,7 +6,14 @@ function Book(name, year, author, isRead) {
   this.year = year;
   this.author = author;
   this.isRead = isRead;
+}
 
+Book.prototype.setBookNumber = function(bookNumber) {
+  this.bookNumber = bookNumber;
+};
+
+Book.prototype.getBookNumber = function() {
+  return this.bookNumber;
 }
 
 function addBookToLibrary(book) {
@@ -21,7 +28,8 @@ function displayBook() {
   for (let x = 0; x < myLibrary.length; x++) {
     console.log(myLibrary);
     const innerContainer = document.createElement('div');
-    innerContainer.className = `innerContainer`;
+    innerContainer.className = `innerContainer` + x;
+    innerContainer.id = 'innerContainer' + x;
 
     library.appendChild(innerContainer);
 
@@ -30,9 +38,12 @@ function displayBook() {
     const author = document.createElement("h2");
     const isRead = document.createElement("h3");
     const btnRead = document.createElement("button");
+    const btnDel = document.createElement("button");
 
     btnRead.className = "btnRead";
+    btnDel.className = "btnDel";
 
+    btnDel.innerText = 'Delete';
     btnRead.innerText = 'Toggle read';
     isRead.innerText = "Have not read";
     name.innerText = myLibrary[x].name;
@@ -44,15 +55,28 @@ function displayBook() {
     innerContainer.appendChild(author);
     innerContainer.appendChild(isRead);
     innerContainer.appendChild(btnRead);
+    innerContainer.appendChild(btnDel);
 
-    btnRead?.addEventListener("click", (event) => {
-      if(isRead.innerText == "Have not read"){
+    btnRead.addEventListener("click", (event) => {
+      if (isRead.innerText == "Have not read") {
         isRead.innerText = 'Have read';
       }
       else {
         isRead.innerText = 'Have not read';
       }
-      
+
+    });
+
+    btnDel.addEventListener('click', (e) => {
+      const targetClass = e.target.closest("div").className;
+
+      const indexTarget = targetClass.at(-1);
+
+      const delElement = document.getElementById(targetClass);
+
+      myLibrary.splice(indexTarget, 1);
+
+      delElement.remove();
     });
 
   }
@@ -78,6 +102,8 @@ btnSubmit.addEventListener("click", (event) => {
     bookCount++;
 
     const book = new Book(bookTitle.value, bookYear.value, bookAuthor.value, false);
+
+    book.setBookNumber(bookCount);
 
     addBookToLibrary(book);
 
